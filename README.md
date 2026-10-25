@@ -23,28 +23,30 @@ open-weight and runs locally via Ollama.
 ## System Architecture
 
 ```mermaid
-graph LR
-    User([User]) -->|runs command| CLI[app.py CLI]
+flowchart LR
+    User([Developer]) -->|"python app.py --repo --since --output"| CLI
 
-    subgraph Local Machine
-        CLI -->|extracts commits| GitData[gitdata.py]
-        GitData -->|git log --stat| Repo[(Local Git Repo)]
-        Repo -->|commit history| GitData
+    subgraph Local["Your Machine (no network calls)"]
+        CLI["app.py<br/>CLI + arg parsing"]
+        Git["gitdata.py<br/>git log --stat"]
+        Repo[("Local Git Repo")]
+        LLM["llm.py<br/>strict prompt"]
+        Ollama["Ollama (local)"]
+        Model["qwen2.5:1.5b<br/>open-weight"]
+        Clip[("OS Clipboard")]
+        File["standup.md<br/>(optional)"]
+        Term(["Terminal output"])
 
-        GitData -->|capped string 2500 chars| LLM[llm.py]
-        LLM -->|prompt + context| Ollama[Ollama API]
-        Ollama -->|local inference| Model[Qwen2.5-1.5B Model]
-
-        Model -->|standup draft| Ollama
-        Ollama -->|response| LLM
-        LLM -->|formatted text| CLI
-        
-        CLI -->|copies to| Clipboard[(OS Clipboard)]
-        CLI -->|prints| Output([Terminal Output])
+        CLI -->|"repo, since"| Git
+        Git <-->|"commits"| Repo
+        Git -->|"capped at 2500 chars"| LLM
+        LLM -->|"system prompt + log"| Ollama
+        Ollama <-->|"local inference"| Model
+        LLM -->|"standup text"| CLI
+        CLI --> Term
+        CLI --> Clip
+        CLI -.->|"--output"| File
     end
-    
-    classDef local fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    class CLI,GitData,LLM,Ollama,Model,Repo,Clipboard local;
 ```
 
 ## Setup
