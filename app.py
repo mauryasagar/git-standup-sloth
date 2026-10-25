@@ -30,6 +30,8 @@ def main():
 
     print("Asking the sloth...")
     standup = generate_standup(log)
+    if "Blockers:" not in standup:
+        standup += "\n\nBlockers:\n- None mentioned"
 
     print("\n" + "=" * 40)
     print(standup)

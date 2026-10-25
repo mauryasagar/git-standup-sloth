@@ -39,6 +39,10 @@ No API keys. No cloud. No data leaves your machine.
 - Reads commit messages + diff stats only, not diff contents.
 - Prompt is capped at 2,500 chars to keep the small model focused.
 
+## Demo
+
+![standup output](screenshot.png)
+
 ## Built with
 
 - [Ollama](https://ollama.com) — local inference runtime
