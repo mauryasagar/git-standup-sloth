@@ -7,6 +7,10 @@ using an open-weight model running entirely on your machine.
   <a href="https://www.youtube.com/watch?v=reR8oLTXelM">
     <img src="https://img.youtube.com/vi/reR8oLTXelM/maxresdefault.jpg" width="100%" alt="Git Standup Sloth Demo Video">
   </a>
+  <br><br>
+  <a href="https://www.youtube.com/watch?v=reR8oLTXelM">
+    <img src="https://img.shields.io/badge/%E2%96%B6%20Watch%20now-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch now on YouTube">
+  </a>
 </div>
 
 ## Why
