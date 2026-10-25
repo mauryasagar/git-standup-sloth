@@ -3,7 +3,7 @@
 A local CLI that reads your recent git commits and writes your standup,
 using an open-weight model running entirely on your machine.
 
-[![Git Standup Sloth Demo Video](https://img.youtube.com/vi/reR8oLTXelM/0.jpg)](https://www.youtube.com/watch?v=reR8oLTXelM)
+![Git Standup Sloth Demo Video](https://img.youtube.com/vi/reR8oLTXelM/0.jpg)
 
 ## Why
 
